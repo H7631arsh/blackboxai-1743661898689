@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Content Moderation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="app.js" defer></script>
+</head>
+<body class="font-sans bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <header class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-800">Audio Content Moderation</h1>
+            <p class="text-gray-600">Analyze audio for inappropriate content</p>
+        </header>
+
+        <main>
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="flex-1">
+                        <h2 class="text-xl font-semibold mb-4">Record or Upload Audio</h2>
+                        <div class="space-y-4">
+                            <button id="recordBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2">
+                                <i class="fas fa-microphone"></i>
+                                <span>Start Recording</span>
+                            </button>
+                            <button id="stopBtn" disabled class="w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2">
+                                <i class="fas fa-stop"></i>
+                                <span>Stop Recording</span>
+                            </button>
+                            <div class="relative">
+                                <input type="file" id="audioUpload" accept="audio/*" class="hidden">
+                                <label for="audioUpload" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-4 rounded-lg flex items-center justify-center gap-2 cursor-pointer">
+                                    <i class="fas fa-upload"></i>
+                                    <span>Upload Audio File</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex-1">
+                        <h2 class="text-xl font-semibold mb-4">Audio Preview</h2>
+                        <div id="audioContainer" class="hidden">
+                            <audio id="audioPlayer" controls class="w-full mb-4"></audio>
+                            <button id="analyzeBtn" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2">
+                                <i class="fas fa-search"></i>
+                                <span>Analyze Content</span>
+                            </button>
+                        </div>
+                        <div id="noAudio" class="text-gray-500 italic">
+                            No audio loaded. Please record or upload audio first.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="resultsContainer" class="hidden bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4">Analysis Results</h2>
+                <div id="resultsContent" class="space-y-4">
+                    <!-- Results will be displayed here -->
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
